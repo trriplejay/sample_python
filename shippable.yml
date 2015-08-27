@@ -29,21 +29,21 @@ script:
 after_success: 
   - echo 'plain build succeeded, triggering other branches.'
   - betaorprod=$(echo "$BUILD_URL" | grep beta || echo "")
-  - if [ -n "$betaorprod" ]; then echo 'BETA triggers'; fi
-  - if [ -n "$betaorprod" ]; then 'curl https://apibeta.shippable.com'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail1\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail2\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail3\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail4\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail5\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail6\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail7\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail8\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail9\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
-  - if [ -n "$betaorprod" ]; then 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"pass1\"}" https://apibeta.shippable.com/workflow/triggerBuild'; fi
+  - 'if [ -n "$betaorprod" ]; then echo "BETA triggers"; fi'
+  - 'if [ -n "$betaorprod" ]; then curl https://apibeta.shippable.com'; fi
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail1\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail2\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail3\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail4\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail5\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail6\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail7\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail8\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail9\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
+  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"pass1\"}" https://apibeta.shippable.com/workflow/triggerBuild; fi'
 
-  - if [ -z "$betaorprod" ]; then echo 'PROD triggers'; fi
-  - if [ -z "$betaorprod" ]; then curl https://api.shippable.com; fi
+  - 'if [ -z "$betaorprod" ]; then echo "PROD triggers"; fi'
+  - 'if [ -z "$betaorprod" ]; then curl https://api.shippable.com; fi'
 
   
 after_failure:
