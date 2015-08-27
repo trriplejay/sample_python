@@ -6,6 +6,9 @@ python:
   - 3.3
   #- 3.4
   #- pypy
+
+env:   
+  - secure: g2QDghMXChUfUuqHEC3wK4SDHnGkCgMKpm7EJ2SMNVDpuuAMjZ1L5w5Xy9QMnR0EhXI/66/5vwUz0JkjejxpOUau1fH0ZGBJLQXj2OW3enTwAimzGMM/i80bLA6GDnM8SuU4iaq90Y+OauYewUtG1+fG9+Dut8fkBwdGp240f2jKohmpP/qtWmrdbE5LhjIEvS22tzEyJhTs4bsBlA476881WE4GiiUYOrNRLvM9t6Qtg7X5JG57WIVa+nEayIsx8Rd/g9tdleR+ojFnU5l+ocnSRcCJBIyeTHMjo3du+trI3Bvn65Yr1cElzSiCDgcTmSlJqWFymuG2d3/NLXJx5g==
   
 install:
   - pip install -r requirements.txt
@@ -26,6 +29,7 @@ script:
 after_success: 
   - echo 'plain build succeeded, triggering other branches.'
   - echo 'BETA triggers'
+  - curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branch\":\"fail1\"}" https://apibeta.shippable.com/workflow/triggerBuild
   - curl https://apibeta.shippable.com
   - echo 'PROD triggers'
   - curl https://api.shippable.com
