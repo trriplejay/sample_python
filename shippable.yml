@@ -37,8 +37,8 @@ after_failure:
   
 after_script:
   - echo 'do stuff'
-  #- cd /fake/dir
-  #- echo 'shouldnt get here'
+  - cd /fake/dir
+  - echo 'shouldnt get here'
 
 notifications:
   email:
