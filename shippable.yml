@@ -27,9 +27,9 @@ script:
 after_success: 
   - echo 'plain build succeeded, triggering other branches.'
   - echo 'BETA triggers'
-  - curl https://apibeta.shippable.com
+  - 'curl https://apibeta.shippable.com'
   - echo 'PROD triggers'
-  - curl https://api.shippable.com
+  - 'curl https://api.shippable.com'
   
   
 after_failure:
