@@ -23,6 +23,15 @@ script:
   - which python && coverage run --branch test.py
   - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
 
+after_success: 
+  - echo 'yay'
+  
+after_failure:
+  - echo 'boo'
+  
+after_script:
+  - echo 'do stuff'
+
 notifications:
   email:
    - exampleone@org.com
