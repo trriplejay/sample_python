@@ -26,13 +26,13 @@ script:
 
 after_success: 
   - echo 'yay'
-  - cd /fake/dir
-  - echo 'shouldnt get here'
+  #- cd /fake/dir
+  #- echo 'shouldnt get here'
   
 after_failure:
   - echo 'boo'
-  - cd /fake/dir
-  - echo 'shouldnt get here'
+  #- cd /fake/dir
+  #- echo 'shouldnt get here'
   
 after_script:
   - echo 'do stuff'
