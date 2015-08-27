@@ -28,6 +28,8 @@ script:
 
 after_success: 
   - echo 'plain build succeeded, triggering other branches.'
+  - betaorprod=$(echo "$BUILD_URL" | grep beta || echo "")
+  - if [ -n "$betaorprod" ]; then
   - echo 'BETA triggers'
   - curl https://apibeta.shippable.com
   - 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail1\"}" https://apibeta.shippable.com/workflow/triggerBuild'
@@ -40,9 +42,12 @@ after_success:
   - 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail8\"}" https://apibeta.shippable.com/workflow/triggerBuild'
   - 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail9\"}" https://apibeta.shippable.com/workflow/triggerBuild'
   - 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"pass1\"}" https://apibeta.shippable.com/workflow/triggerBuild'
+  - else
   - echo 'PROD triggers'
   - curl https://api.shippable.com
+  - fi
   
+
   
 after_failure:
   - echo 'boo'
