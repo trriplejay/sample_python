@@ -20,13 +20,14 @@ before_script:
 
 script:
   - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-  - cd /fake/dir
   - which python && coverage run --branch test.py
   - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
   
 
 after_success: 
   - echo 'yay'
+  - cd /fake/dir
+  - echo 'shouldnt get here'
   
 after_failure:
   - echo 'boo'
