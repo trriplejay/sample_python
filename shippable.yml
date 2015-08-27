@@ -30,7 +30,7 @@ after_success:
   - echo 'plain build succeeded, triggering other branches.'
   - echo 'BETA triggers'
   - curl https://apibeta.shippable.com
-  - 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branch\":\"fail1\"}" https://apibeta.shippable.com/workflow/triggerBuild'
+  - 'curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"projectId\":\"559b5acd2e2ab50e64b4eace\",\"branchName\":\"fail1\"}" https://apibeta.shippable.com/workflow/triggerBuild'
   - echo 'PROD triggers'
   - curl https://api.shippable.com
   
