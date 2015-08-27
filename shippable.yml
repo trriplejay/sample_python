@@ -15,7 +15,7 @@ install:
 before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
-  #- cd fake/dir
+  - cd fake/dir
   - echo 'shouldnt get here'
 
 script:
