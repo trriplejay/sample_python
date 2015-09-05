@@ -11,6 +11,8 @@ python:
 install:
   - pip install -r requirements.txt
 
+archive: true
+
 # Make folders for the reports
 before_script:
   - mkdir -p shippable/testresults
