@@ -10,6 +10,8 @@ python:
   
 install:
   - pip install -r requirements.txt
+  - cd /fake/dir
+  - echo 'shouldnt get here'
 
 # Make folders for the reports
 before_script:
