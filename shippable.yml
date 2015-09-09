@@ -16,8 +16,8 @@ archive: true
 # Make folders for the reports
 before_script:
   - echo 'hello world'
-  - rm -f shippable/testresults
-  - rm -f shippable/codecoverage
+  - rm -r shippable/testresults
+  - rm -r shippable/codecoverage
   #- mkdir -p shippable/testresults
   #- mkdir -p shippable/codecoverage
   #- cd fake/dir
