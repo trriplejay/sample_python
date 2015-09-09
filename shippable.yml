@@ -11,7 +11,7 @@ python:
 install:
   - pip install -r requirements.txt
 
-#archive: true
+archive: true
 
 # Make folders for the reports
 before_script:
