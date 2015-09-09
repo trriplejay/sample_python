@@ -15,13 +15,14 @@ archive: true
 
 # Make folders for the reports
 before_script:
-  - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
+  - echo 'hello world'
+  #- mkdir -p shippable/testresults
+  #- mkdir -p shippable/codecoverage
   #- cd fake/dir
   #- echo 'shouldnt get here'
 
 script:
-  - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+  #- nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
   - cd fake/dir
   - which python && coverage run --branch test.py
   - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
