@@ -1,0 +1,9 @@
+language: python
+
+script:
+  - echo 'bad yaml'
+  after_script:
+    - echo 'uh oh'
+
+cache: true
+
