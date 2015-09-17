@@ -1,6 +1,6 @@
-language: java
+language: clojure
 
-java:
+clojure:
   - 4.2
   - abcd
   -
