@@ -1,6 +1,6 @@
-language: java
+language: whitespace
 
-java:
+whitespace:
   - 4.2
   - abcd
 
