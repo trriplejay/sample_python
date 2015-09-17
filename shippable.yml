@@ -1,7 +1,10 @@
 language: python
 
+python:
+  - 4.2
+
 script:
-  - echo 'bad yaml'
+  - echo 'bad runtime'
 after_script:
   - echo 'uh oh try again'
 
