@@ -8,5 +8,5 @@ after_script:
 cache: true
 
 branches:
-  except:
+  only:
     - ymlexclude
