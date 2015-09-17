@@ -1,8 +1,9 @@
-language: whitespace
+language: java
 
-whitespace:
+java:
   - 4.2
   - abcd
+  -
 
 script:
   - echo 'bad runtime'
