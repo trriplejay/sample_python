@@ -9,4 +9,4 @@ cache: true
 
 branches:
   except:
-    - ymlexclude
+    - noyaml
