@@ -1,6 +1,6 @@
-language: fakelang
+language: clojure
 
-fakelang:
+clojure:
   - 4.2
   - abcd
   -
