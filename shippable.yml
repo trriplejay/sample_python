@@ -1,6 +1,6 @@
-language: python
+language: java
 
-python:
+java:
   - 4.2
   - abcd
 
