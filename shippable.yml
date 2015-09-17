@@ -2,6 +2,7 @@ language: python
 
 python:
   - 4.2
+  - abcd
 
 script:
   - echo 'bad runtime'
