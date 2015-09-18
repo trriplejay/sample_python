@@ -1,7 +1,8 @@
-language: python
+language: arnold
 
-python:
+arnold:
   - 4.2
+  -
 
 script:
   - echo 'bad runtime'
