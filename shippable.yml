@@ -13,6 +13,8 @@ install:
   
 archive: true
 
+cache: true
+
 # Make folders for the reports
 before_script:
   - mkdir -p shippable/testresults
