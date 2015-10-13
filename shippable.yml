@@ -3,7 +3,7 @@ language: python
 script:
   - echo 'bad yaml'
 after_script:
-  - echo 'uh o'
+  - echo 'uh oh'
 
 cache: true
 
