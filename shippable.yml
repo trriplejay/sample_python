@@ -18,8 +18,8 @@ build:
     - ls -latr /build
     - source /build/OUT/simple-image-runShSample/integration.env
     - docker login -u $username -p $password -e $email 2>&1 || echo "failed to login"
-    - 'if [ $MODE == "image" ]; then echo "versionName=$BRANCH.$BUILD_NUMBER" >> /build/state/simple-image-runShSample.env'
-    - 'if [ $MODE == "params" ]; then echo "test=$BUILD_NUMBER" >> /build/state/'
+    - 'if [ $MODE == "image" ]; then echo "versionName=$BRANCH.$BUILD_NUMBER" >> /build/state/simple-image-runShSample.env; fi'
+    - 'if [ $MODE == "params" ]; then echo "test=$BUILD_NUMBER" >> /build/state/; fi'
     #- docker push $USERNAME/imagename:$BRANCH.$BUILD_NUMBER
     
   on_failure:
