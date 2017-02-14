@@ -3,6 +3,8 @@ python:
   - 2.6
   
 build:
+  pre_ci:
+    - ls -latr /build
   ci:
     - pip install -r requirements.txt
     - echo "hello world"
