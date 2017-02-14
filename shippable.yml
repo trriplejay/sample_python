@@ -13,6 +13,7 @@ build:
     #- ls -latr /build/state
   push:
     - ls -latr /build
+    - echo "versionName=$BRANCH.$BUILD_NUMBER" >> /build/state/simple-image-runShSample.env
   on_failure:
     - echo 'boo'
     #- cd /fake/dir
