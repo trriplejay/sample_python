@@ -10,15 +10,12 @@ build:
     - which python && coverage run --branch test.py
     - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
   
-
-
+  on_failure:
+    - echo 'boo'
+    #- cd /fake/dir
+    #- echo 'shouldnt get here'
   
-on_failure:
-  - echo 'boo'
-  #- cd /fake/dir
-  #- echo 'shouldnt get here'
-  
-on_success:
-  - echo 'it worked!'
-  #- cd /fake/dir
-  #- echo 'shouldnt get here'
+  on_success:
+    - echo 'it worked!'
+    #- cd /fake/dir
+    #- echo 'shouldnt get here'
