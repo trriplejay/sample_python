@@ -13,7 +13,11 @@ build:
     #- ls -latr /build/state
   push:
     - ls -latr /build
+    - source ~/build/OUT/simple-image-runShSample/integration.env
+    - docker login -u $username -p $password -e $email
     - echo "versionName=$BRANCH.$BUILD_NUMBER" >> /build/state/simple-image-runShSample.env
+    #- docker push $USERNAME/imagename:$BRANCH.$BUILD_NUMBER
+    
   on_failure:
     - echo 'boo'
     #- cd /fake/dir
