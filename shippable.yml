@@ -9,9 +9,10 @@ build:
     - pip install -r requirements.txt
     - echo "hello world"
     - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-    - ls -altr /build
-    - ls -latr /build/state
-  
+    #- ls -altr /build
+    #- ls -latr /build/state
+  push:
+    - ls -latr /build
   on_failure:
     - echo 'boo'
     #- cd /fake/dir
