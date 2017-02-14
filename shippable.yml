@@ -1,77 +1,24 @@
 language: python
 python:
   - 2.6
-  #- 2.7
-  #- 3.2
-  #- 3.3
-  #- 3.4
-  #- pypy
-
-env:
-  global:
-    - secure: iL7ie9l21U6zW9+3p4TpEfj77L98oAKHtYIEeLFEvO13NI8Zg6R02ExQrNoTSqgXtVViCgkDWR0tJePQYxTrhZ8u/h/tehfFAseNjFwN5NuqW5mKmV2eSbO2KuN1PyVB/CTSFWW+mET4RiKVIrAVcOLjwbNHuXxq+3dFwU635EznHgoET9vslzTgUCG0IRhBIUhkvo3agStrQRuhJAVp/bJ9m6lcJ2QQZkiOLOnzda2DXS4GL+6FYlTPyVIXySIEbRup1eAR7MfzTbbg8sFtAqJBOUSoGdsSEW1Y8CO7WwGOayClM9qzY0loPGLlYJ02omxVUTJ1Uwzbese5tDGYTQ==
   
-install:
-  - pip install -r requirements.txt
-
-# Make folders for the reports
-before_script:
-  - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
-  #- cd fake/dir
-  #- echo 'shouldnt get here'
-
-script:
-  - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-  - which python && coverage run --branch test.py
-  - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
+build:
+  ci:
+    - pip install -r requirements.txt
+    - echo "hello world"
+    - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+    - which python && coverage run --branch test.py
+    - which python && coverage xml -o shippable/codecoverage/coverage.xml test.py
   
 
-after_success: 
-  - echo 'plain build succeeded, triggering other branches.'
-  - betaorprod=$(echo "$BUILD_URL" | grep beta || echo "")
-  - 'if [ -n "$betaorprod" ]; then echo "BETA triggers"; fi'
-  - 'if [ -n "$betaorprod" ]; then curl https://apibeta.shippable.com; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail1\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail2\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail3\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail4\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail5\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail6\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail7\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail8\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail9\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"failA\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"failB\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  - 'if [ -n "$betaorprod" ]; then curl -H "Authorization: apiToken $BETA_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"pass1\"}" https://apibeta.shippable.com/projects/559b5acd2e2ab50e64b4eace/newBuild; fi'
-  
-
-  - 'if [ -z "$betaorprod" ]; then echo "PROD triggers"; fi'
-  - 'if [ -z "$betaorprod" ]; then curl https://api.shippable.com; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail1\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail2\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail3\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail4\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail5\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail6\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail7\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail8\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"fail9\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"failA\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"failB\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
-  - 'if [ -z "$betaorprod" ]; then curl -H "Authorization: apiToken $PROD_TOKEN" -H "Content-Type: application/json" -d "{\"branchName\":\"pass1\"}" https://api.shippable.com/projects/54d2803e5ab6cc13528ad557/newBuild; fi'
 
   
-after_failure:
+on_failure:
   - echo 'boo'
   #- cd /fake/dir
   #- echo 'shouldnt get here'
   
-after_script:
-  - echo 'do stuff'
+on_success:
+  - echo 'it worked!'
   #- cd /fake/dir
   #- echo 'shouldnt get here'
-
-notifications:
-  email:
-   - exampleone@org.com
