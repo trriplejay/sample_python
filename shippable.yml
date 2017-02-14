@@ -1,6 +1,9 @@
 language: python
 python:
   - 2.6
+env:
+  MODE=params
+  MODE=image
   
 build:
   pre_ci:
@@ -15,7 +18,8 @@ build:
     - ls -latr /build
     - source /build/OUT/simple-image-runShSample/integration.env
     - docker login -u $username -p $password -e $email 2>&1 || echo "failed to login"
-    - echo "versionName=$BRANCH.$BUILD_NUMBER" >> /build/state/simple-image-runShSample.env
+    - 'if [ $MODE == "image" ]; then echo "versionName=$BRANCH.$BUILD_NUMBER" >> /build/state/simple-image-runShSample.env'
+    - 'if [ $MODE == "params" ]; then echo "test=$BUILD_NUMBER" >> /build/state/'
     #- docker push $USERNAME/imagename:$BRANCH.$BUILD_NUMBER
     
   on_failure:
