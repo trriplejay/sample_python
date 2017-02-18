@@ -2,7 +2,7 @@ language: python
 python:
   - 2.6
 env:
-  - MODE=params
+  #- MODE=params
   - MODE=image
   
 build:
@@ -10,6 +10,7 @@ build:
     - ls -latr /build
   ci:
     - pip install -r requirements.txt
+    - java -version
     - echo "hello world"
     - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
     - ls -altr /build
