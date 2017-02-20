@@ -15,6 +15,7 @@ build:
     - nosetests test.py --with-xunit --xunit-file=shippable/testresults/nosetests.xml
     - ls -altr /build
     - ls -latr /build/state
+    - echo "$PATH"
   push:
     - ls -latr /build
     - source /build/OUT/simple-image-runShSample/integration.env
@@ -22,6 +23,7 @@ build:
     - 'if [ $MODE == "image" ]; then echo "versionName=$BRANCH.$BUILD_NUMBER" >> $JOB_STATE/simple-image-runShSample.env; fi'
     - 'if [ $MODE == "params" ]; then echo "test=$BUILD_NUMBER" >> $JOB_STATE/myParams-runShSample.env; fi'
     - echo "versionName=$BRANCH.$BUILD_NUMBER" >> /build/state/sample_python_runCI.env
+    - echo "$PATH"
     #- docker push $USERNAME/imagename:$BRANCH.$BUILD_NUMBER
     
   on_failure:
